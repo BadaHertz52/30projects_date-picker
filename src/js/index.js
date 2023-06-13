@@ -118,6 +118,7 @@ class DatePicker {
     this.updateMonth();
     this.updateDates();
     this.markToday();
+    this.markSelectedDate();
   }
   /**
    * this.dateInputEl의 text을 기준으로 달력을 보여줌
@@ -229,6 +230,16 @@ class DatePicker {
 
       // close calendar
       this.calendarEl.classList.remove("active");
+    }
+  }
+  markSelectedDate() {
+    if (
+      this.selectedDate.year === this.#calendarDate.year &&
+      this.selectedDate.month === this.#calendarDate.month
+    ) {
+      this.calendarDatesEl
+        .querySelector(`[data-date="${this.selectedDate.date}"]`)
+        .classList.add("selected");
     }
   }
   /**
