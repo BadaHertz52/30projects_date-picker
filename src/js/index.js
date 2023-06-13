@@ -13,7 +13,9 @@ class DatePicker {
     "November",
     "December",
   ];
-  // date-input 의 text
+  /**
+   * 현재 보여지는 캘린더의 기준이 되는 Date
+   */
   #calendarDate = {
     data: "", // Date 객체
     date: 0,
@@ -27,6 +29,9 @@ class DatePicker {
   monthContentEl;
   nextBtnEl;
   prevBtnEl;
+  /**
+   * 캘린더의 연,월이 정해질 경우 생성되는 날짜 요소들을 감싸는 요소
+   */
   calendarDatesEl;
   selectedDate = {
     data: "", // Date 객체
@@ -55,7 +60,6 @@ class DatePicker {
       year,
     };
   }
-
   assignElement() {
     this.datePickerEl = document.getElementById("date-picker");
     this.dateInputEl = this.datePickerEl.querySelector("#date-input");
