@@ -79,6 +79,12 @@ class DatePicker {
       "click",
       this.onClickSelectDate.bind(this)
     );
+    document.addEventListener(
+      "click",
+      ((event) => {
+        this.closeCalendar(event);
+      }).bind(this)
+    );
   }
   /**
    *  this.dateInputEl의 textContent, data-value의 값을 변경
@@ -127,6 +133,15 @@ class DatePicker {
     this.changeCalendarDateByDataInput();
     this.calendarEl.classList.toggle("active");
     this.updateCalendar();
+  }
+  closeCalendar(event) {
+    const target = event.target;
+    const isCorrectTarget = !(
+      target?.closest("#calendar") || target?.closest("#date-input")
+    );
+    if (this.calendarEl.classList.contains("active") && isCorrectTarget) {
+      this.calendarEl.classList.remove("active");
+    }
   }
   /**
    * 현재 날짜에 맞추어 month 의 content변경
@@ -227,9 +242,6 @@ class DatePicker {
       };
       //data-input
       this.updateDateInput(year, month, date);
-
-      // close calendar
-      this.calendarEl.classList.remove("active");
     }
   }
   markSelectedDate() {
