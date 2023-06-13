@@ -9,5 +9,5 @@ module.exports = {
   optimize: {
     minify: true,
   },
-  plugins: ["@snowpack/plugin-sass"],
+  plugins: ["@snowpack/plugin-sass" ,"@snowpack/plugin-typescript"],
 };
