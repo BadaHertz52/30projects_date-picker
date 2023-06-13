@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "snowpack dev",
-    "build": "snowpack build"
+    "build": "snowpack build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
@@ -27,6 +29,7 @@
     "snowpack": "^3.8.8"
   },
   "dependencies": {
+    "gh-pages": "^5.0.0",
     "prettier": "2.8.8"
   }
 }
