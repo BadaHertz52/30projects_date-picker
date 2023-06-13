@@ -208,7 +208,7 @@ class DatePicker {
   }
   moveToNextMonth() {
     this.#calendarDate.month++;
-    if (this.#calendarDate.month === 12) {
+    if (this.#calendarDate.month > 12) {
       this.#calendarDate.year++;
       this.#calendarDate.month = 1;
     }
@@ -216,7 +216,7 @@ class DatePicker {
   }
   moveToPrevMonth() {
     this.#calendarDate.month--;
-    if (this.#calendarDate.month === 0) {
+    if (this.#calendarDate.month < 1) {
       this.#calendarDate.year--;
       this.#calendarDate.month = 12;
     }
