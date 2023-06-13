@@ -69,13 +69,25 @@ class DatePicker {
 
   addEvent() {
     this.dateInputEl.addEventListener("click", this.toggleCalendar.bind(this));
+  /**
+   *  this.dateInputEl의 textContent, data-value의 값을 변경
+   * @param  year
+   * @param  month
+   * @param  date
+   */
+  updateDateInput(year, month, date) {
+    this.dateInputEl.textContent = `${year}/${this.formateNumber(
+      month
+    )}/${this.formateNumber(date)}`;
+    this.dateInputEl.dataset.value = new Date(year, month - 1, date);
   }
   /**
    * date-input에 오늘 날짜를 입력
    */
   initDateInput() {
     const { year, month, date } = this.#calendarDate;
-    this.dateInputEl.textContent = `${year}/${month}/${date}`;
+    this.updateDateInput(year, month, date);
+  }
   }
   /**
    * this.dateInputEl의 text을 기준으로 달력을 보여줌
@@ -131,6 +143,20 @@ class DatePicker {
     );
     saturdayEls.forEach((i) => (i.style.color = "blue"));
     sundayEls.forEach((i) => (i.style.color = "red"));
+  }
+  /**
+   * 숫자를 두  글자로 변환하는 함수 (한 자리 수인 숫자의 경우 앞에 0을 붙임)
+   * @param  number
+   * @returns
+   */
+  formateNumber(number) {
+    let data = number;
+    if (data < 10) {
+      data = `0${data}`;
+    } else {
+      data = number.toString();
+    }
+    return data;
   }
 }
 
