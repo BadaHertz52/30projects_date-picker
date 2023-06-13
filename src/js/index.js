@@ -91,6 +91,18 @@ class DatePicker {
     this.updateDateInput(year, month, date);
   }
   /**
+   * this.dateInputEl 에서 보여주는 연월일을 기준으로 캘린더를 열기위해, this.dataInputEl의 data-value의 값에 따라,this.#calendarDate를 변경
+   */
+  changeCalendarDateByDataInput() {
+    const data = new Date(this.dateInputEl.dataset.value);
+    this.#calendarDate = {
+      data: data,
+      year: data.getFullYear(),
+      month: data.getMonth() + 1,
+      date: data.getDate(),
+    };
+  }
+  /**
    * 캘린더의 변경이 있을 경우, 월,날짜,현재 날짜 표시 동작을 진행
    */
   updateCalendar() {
@@ -102,6 +114,7 @@ class DatePicker {
    * this.dateInputEl의 text을 기준으로 달력을 보여줌
    */
   toggleCalendar() {
+    this.changeCalendarDateByDataInput();
     this.calendarEl.classList.toggle("active");
     this.updateCalendar();
   }
