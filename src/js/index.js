@@ -90,14 +90,20 @@ class DatePicker {
     const { year, month, date } = this.#calendarDate;
     this.updateDateInput(year, month, date);
   }
+  /**
+   * 캘린더의 변경이 있을 경우, 월,날짜,현재 날짜 표시 동작을 진행
+   */
+  updateCalendar() {
+    this.updateMonth();
+    this.updateDates();
+    this.markToday();
   }
   /**
    * this.dateInputEl의 text을 기준으로 달력을 보여줌
    */
   toggleCalendar() {
     this.calendarEl.classList.toggle("active");
-    this.updateMonth();
-    this.updateDates();
+    this.updateCalendar();
   }
   /**
    * 현재 날짜에 맞추어 month 의 content변경
@@ -145,6 +151,22 @@ class DatePicker {
     );
     saturdayEls.forEach((i) => (i.style.color = "blue"));
     sundayEls.forEach((i) => (i.style.color = "red"));
+  }
+  /**
+   * 오늘 날짜 표시
+   */
+  markToday() {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1;
+    const today = currentDate.getDate();
+    const { year, month } = this.#calendarDate;
+    //화면 표시 조건
+    if (currentYear === year && currentMonth === month) {
+      this.calendarDatesEl
+        .querySelector(`[data-date="${today}"]`)
+        .classList.add("today");
+    }
   }
   moveToNextMonth() {
     this.#calendarDate.month++;
