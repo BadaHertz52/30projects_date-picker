@@ -71,6 +71,11 @@ class DatePicker {
     this.dateInputEl.addEventListener("click", this.toggleCalendar.bind(this));
     this.nextBtnEl.addEventListener("click", this.moveToNextMonth.bind(this));
     this.prevBtnEl.addEventListener("click", this.moveToPrevMonth.bind(this));
+    this.calendarDatesEl.addEventListener(
+      "click",
+      this.onClickSelectDate.bind(this)
+    );
+  }
   /**
    *  this.dateInputEl의 textContent, data-value의 값을 변경
    * @param  year
@@ -196,6 +201,31 @@ class DatePicker {
       this.#calendarDate.month = 12;
     }
     this.updateCalendar();
+  }
+
+  onClickSelectDate(event) {
+    const eventTarget = event.target;
+    if (eventTarget.dataset.date) {
+      // class
+      this.calendarDatesEl
+        .querySelector(".selected")
+        ?.classList.remove("selected");
+      eventTarget.classList.add("selected");
+      const date = eventTarget.dataset.date;
+      //selectedDate
+      const { year, month } = this.#calendarDate;
+      this.selectedDate = {
+        data: new Date(year, month - 1, date),
+        year: year,
+        month: month,
+        date: date,
+      };
+      //data-input
+      this.updateDateInput(year, month, date);
+
+      // close calendar
+      this.calendarEl.classList.remove("active");
+    }
   }
   /**
    * 숫자를 두  글자로 변환하는 함수 (한 자리 수인 숫자의 경우 앞에 0을 붙임)
