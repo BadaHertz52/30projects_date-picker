@@ -1,3 +1,6 @@
+$min-width: 280px;
+$main-width: 70vw;
+$wide-main-width: 90px;
 * {
   margin: 0;
   padding: 0;
@@ -7,21 +10,22 @@
 
 .date-picker {
   position: relative;
+  width: 100%;
+  margin: 0 auto;
 
   .date-input {
-    margin: 30px auto;
+    margin: 16px auto;
     display: flex;
-    height: 60px;
-    width: 300px;
+    height: 30px;
+    width: $min-width;
     position: relative;
     justify-content: center;
     align-items: center;
     background-color: #fff;
     box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
     color: #313131;
-    font-size: 28px;
+    font-size: 20px;
     cursor: pointer;
-    // !
     &:hover {
       background-color: #f3f3f3;
     }
@@ -30,8 +34,9 @@
   .calendar {
     display: none;
     position: absolute;
-    width: 700px;
-    top: 100%;
+    width: $main-width;
+    min-width: $min-width;
+    top: calc(100% + 16px);
     left: 0;
     right: 0;
     background-color: #fff;
@@ -46,7 +51,6 @@
 
     .month {
       display: flex;
-      // !
       justify-content: space-between;
       align-items: center;
       border-bottom: 2px solid #eee;
@@ -77,7 +81,8 @@
 
       .day {
         display: flex;
-        width: 100px;
+        width: calc($main-width / 7);
+        min-width: calc($min-width / 7);
         height: 50px;
         justify-content: center;
         align-items: center;
@@ -94,7 +99,6 @@
     }
 
     .dates {
-      // !
       display: grid;
       grid-template-columns: repeat(7, 1fr);
 
@@ -103,8 +107,10 @@
         justify-content: center;
         align-items: center;
         color: #313131;
-        height: 100px;
-        width: 100px;
+        width: calc($main-width / 7);
+        min-width: calc($min-width / 7);
+        height: calc($main-width / 7);
+        min-height: calc($min-width / 7);
         cursor: pointer;
         transition: 0.3s;
 
@@ -119,6 +125,21 @@
         &.selected {
           background-color: #a0fdde;
         }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .date-picker {
+    .calendar {
+      width: calc($wide-main-width * 7);
+      .days .day,
+      .dates .date {
+        width: $wide-main-width;
+      }
+      .dates .date {
+        height: $wide-main-width;
       }
     }
   }
