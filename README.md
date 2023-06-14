@@ -19,8 +19,8 @@
 ## <div id="introduce">1.프로젝트 소개</div>
 
 - 📷 프로젝트 시뮬레이션
-  <br/>
-  <img alt="date picker simulation" src="./date-picker.gif" width="350px">
+
+  <img alt="date picker simulation" src="./readme_assets/date-picker.gif" width="350px">
   <br/>
   <br/>
   "30projects_date-picker" 프로젝트는 "30개 프로젝트로 배우는 프론트엔드 with React" 수업 중에 하나로, Snowpack,바닐라 자바스크립트와 scss 를 활용해 data-picker 를 구현한 프로젝트인데, 여기서 더 나아가 **리팩토링(구조 분해 할당과 반복되는 과정을 새로운 함수로 만듦) 과정을 거치고 기존의 js를 typescript로 변경하고 반응형 웹을 위해 scss 파일을 수정**했다.
@@ -109,21 +109,21 @@ module.exports = {
 <summary>빌드 후 파일 구조</summary>
 <div markdown="1">
 
-  <img markdown="1" alt="project file structure" src="./documents.png" height="300px">
+  <img markdown="1" alt="project file structure" src="./readme_assets/documents.png" height="300px">
 
 </div>
 </details>
-* public/index.html
-  
+
+- public/index.html
+
 ```html
- ...
- <head>
- ....
-   <link rel="stylesheet" href="dist/scss/style.css">
+<head>
+  <link rel="stylesheet" href="dist/scss/style.css" />
   <script defer src="dist/js/index.js"></script>
- </head>
+</head>
 ```
- index.html에서는  빌드 된 파일들이 저장되는 **dist 폴더** 내의 css와 js 파일들 불러오면 css와 js가 적용된다.
+
+index.html에서는 빌드 된 파일들이 저장되는 **dist 폴더** 내의 css와 js 파일들 불러오면 css와 js가 적용된다.
 
 ### <div id="grid">2) grid-column-start</div>
 
@@ -131,28 +131,7 @@ module.exports = {
 
 grid-column-start는 grid의 시작점을 지정하는 것으로, ,<span style="background-color:gray; color:white"> grid-column-start : 7 </span> 이면 아래의 표에서 "7"라고 쓰여진 곳에서 부터 grid로 지정된 요소들이 나열되기 시작한다.
 
-- grid
-  <div style="display:flex; width=300px;">
-  <div style="margin-right:50px;">
-
-  |     |     |                                                                              |     |
-  | --- | --- | ---------------------------------------------------------------------------- | --- |
-  | 1   | 2   | 3                                                                            | 4   |
-  | 5   | 6   | <div style="background-color:#C4B0FF; color:black;text-align:center">7</div> | 8   |
-  | 9   | 10  | 11                                                                           | 12  |
-
-  </div>
-
-  <div>
-
-  |                                                                                                     |                                                                                                      |                                                                                                      |                                                                                                      |
-  | --------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-  | x                                                                                                   | x                                                                                                    | x                                                                                                    | x                                                                                                    |
-  | x                                                                                                   | <div style="background-color:#C4B0FF; color:black;text-align:center; width:16px; height:16px"></div> | <div style="background-color:#C4B0FF; color:black;text-align:center; width:16px; height:16px"></div> | <div style="background-color:#C4B0FF; color:black;text-align:center; width:16px; height:16px"></div> |
-  | <div style="background-color:#C4B0FF; color:black;text-align:center;width:16px; height:16px"></div> | <div style="background-color:#C4B0FF; color:black;text-align:center; width:16px; height:16px"></div> | <div style="background-color:#C4B0FF; color:black;text-align:center;width:16px; height:16px"></div>  | <div style="background-color:#C4B0FF; color:black;text-align:center; width:16px; height:16px"></div> |
-
-  </div>
-  </div>
+  <img alt="grid" src="./readme_assets/grid.png" width="350px">
 
 ### <div id="event"> 3) event parameter와 class</div>
 
