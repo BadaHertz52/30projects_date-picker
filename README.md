@@ -18,7 +18,7 @@
 
 ## <div id="introduce">1.프로젝트 소개</div>
 
-- 📷 프로젝트 시뮬레이션
+- 📷 프로젝트 작동 화면
 
   <img alt="date picker simulation" src="./readme_assets/date-picker.gif" width="350px">
   <br/>
