@@ -51,10 +51,10 @@
 > npm i
 ```
 
-#### Run Dev Server
+#### Run Dev 
 
 ```bash
-> npm run dev
+> npm run start
 ```
 
 #### Build
